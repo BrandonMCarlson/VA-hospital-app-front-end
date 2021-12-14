@@ -4,6 +4,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MapContainer from "./components/MapContainer";
 import Register from "./pages/register";
+import { Routes, Link, Route, useParams, useNavigate } from "react-router-dom";
+import NavBar from "./components/navbar";
+import Login from "./pages/login";
+import SearchBox from "./components/SearchBox";
+import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
+import Profile from "./pages/profile";
+
+
 
 function App() {
   const [user, setUser] = useState({});
@@ -48,8 +56,21 @@ function App() {
   return (
     <div className="App">
       <div>
-        <MapContainer />
-        <Register/>
+      <div>
+    <NavBar setProfile={setProfile} setSearchText={setSearchText} user={user} profile={profile} render={render}/>
+    <SearchBox allUsers={allUsers} setProfile={setProfile} searchText={searchText}/>
+      <div>
+        <Routes>
+          <Route path="/" element={<Login setUser={setUser} setProfile={setProfile}  />}></Route>
+          <Route path="register" element={<Register setUser={setUser} user={user} setProfile={setProfile}/>}></Route>
+          <Route path="profile" element={<Profile user={user}  render={render} setUser={setUser} setProfile={setProfile} profile={profile} />}></Route>
+        </Routes>
+        <div className="footer-div">
+        {!render ? null : <MeetingRoomIcon onClick={()=>logoutUser()} fontSize="large"/>}
+      </div>
+      </div>
+   
+    </div>
       </div>
     </div>
   );
