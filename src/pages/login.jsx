@@ -34,7 +34,7 @@ const Login = ({ setUser, setProfile }) => {
     <div className="whole-login-div">
       <div>
         <div className="login-title">
-          <h1>MemeBook</h1>
+          <h1>Veteran Affairs Health Helper</h1>
           <br></br>
           <h1>Login</h1>
         </div>

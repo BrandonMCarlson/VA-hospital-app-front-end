@@ -10,6 +10,7 @@ import Login from "./pages/login";
 import SearchBox from "./components/SearchBox";
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import Profile from "./pages/profile";
+import Welcome from "./pages/welcome";
 
 
 
@@ -49,8 +50,10 @@ function App() {
       });
   };
 
+
   useEffect(() => {
     getAllUsers();
+    getFacility();
   }, []);
 
   return (

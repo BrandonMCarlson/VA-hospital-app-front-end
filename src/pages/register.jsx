@@ -65,7 +65,7 @@ const Register = ({ user, setUser, setProfile }) => {
           </div>
           <div className="terms">
                 By creating an account you agree to our
-                <p>Terms of <a target="_blank" href="https://www.youtube.com/watch?v=eh7lp9umG2I">Service and Privacy Policy</a></p> 
+                <p>Terms of <a target="_blank" href="https://www.va.gov/privacy-policy/">Service and Privacy Policy</a></p> 
           </div>
         </form>
       </div>

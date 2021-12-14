@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Route, Routes } from "react-router";
-import Button from "../Button";
-import MainHeader from "../MainHeader";
+import Button from "../components/Button";
+
+
+
 const Welcome = () => {
     return ( 
         <div>
-             <MainHeader />
             <h1>Welcome to Veteran Affairs Health Helper</h1>
             <Button/>
         </div>

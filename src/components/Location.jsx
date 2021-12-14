@@ -4,6 +4,7 @@ import axios from "axios";
 import useForm from "../useForm";
 import TextField from "@mui/material/TextField";
 
+
 const Location = ({ user, setUser, profile, render }) => {
 
   const updateLocation = async () => {
@@ -52,4 +53,4 @@ const Location = ({ user, setUser, profile, render }) => {
   );
 };
 
-export default AboutMe;
+export default Location;

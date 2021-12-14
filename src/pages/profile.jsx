@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import favLocation from "../components/location";
-
+import Location from "../components/Location";
 
 const Profile = ({
   user,
@@ -10,24 +9,30 @@ const Profile = ({
   render,
   facility,
   setFacility,
+  location,
+  setLocation
 }) => {
   const [value, setValue] = React.useState("1");
-  
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  useEffect(() => {
-    
-  }, [profile._id]);
+  useEffect(() => {}, [profile._id]);
 
   return (
     <div>
       <div className="profile-page-grid">
-        <div className='post-text'>
-          <favFacility render={render} profile={profile} user={user} setUser={setUser} />
+        <div className="post-text">
+          <favFacility
+            render={render}
+            profile={profile}
+            user={user}
+            setUser={setUser}
+            facility={facility}
+            setFacility={setFacility}
+          />
         </div>
-
       </div>
     </div>
   );
