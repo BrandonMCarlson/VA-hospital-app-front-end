@@ -2,7 +2,7 @@ import { Map, GoogleApiWrapper } from "google-maps-react";
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import MapContainer from "./components/MapContainer";
+import MapContainer from "./pages/MapContainer";
 import Register from "./pages/register";
 import { Routes, Link, Route, useParams, useNavigate } from "react-router-dom";
 import NavBar from "./components/navbar";
