@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 
 
 const Register = ({ user, setUser, setProfile }) => { 
-
+  const navigate = useNavigate();
 
   const registerUser = async () => {
     if (formValue.password !== formValue.confirmPassword) {
@@ -29,6 +29,7 @@ const Register = ({ user, setUser, setProfile }) => {
         const user = jwtDecode(localStorage.getItem("token"));
         setUser(user);
         setProfile(user);
+        navigate("/profile");
         console.log("token", res.headers["x-auth-token"]);
       })
       .catch((error) => console.log(error));
@@ -61,7 +62,7 @@ const Register = ({ user, setUser, setProfile }) => {
           <TextField id="outlined-basic"  type="password" name="confirmPassword" label="Confirm Password" onChange={(event)=>handleChange(event)} variant="outlined" required/>
           </div>
           <div className="flex-button">
-            <Button className="login-buttons" type="subbmit" onClick={(event)=>handleSubmit(event)} variant="contained">Register</Button>
+            <Button className="login-buttons" type="submit" onClick={(event)=>handleSubmit(event)} variant="contained">Register</Button>
           </div>
           <div className="terms">
                 By creating an account you agree to our

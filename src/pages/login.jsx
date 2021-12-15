@@ -28,7 +28,9 @@ const Login = ({ setUser, setProfile }) => {
   const { formValue, handleChange, handleSubmit, setFormValue } =
     useForm(loginUser);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    
+  }, []);
 
   return (
     <div className="whole-login-div">
@@ -60,7 +62,7 @@ const Login = ({ setUser, setProfile }) => {
             <div className="register-here-button">
               <Button
                 className="login-buttons"
-                type="subbmit"
+                type="submit"
                 onClick={(event) => handleSubmit(event)}
                 variant="contained"
               >

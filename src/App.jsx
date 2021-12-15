@@ -21,6 +21,7 @@ function App() {
   const [searchText, setSearchText] = useState("");
   const [facility, setFacility] = useState({});
   const [allFacilities, setAllFacilities] = useState({});
+  const [map, setMap] = useState({});
 
   const render = localStorage.getItem("token");
 
@@ -66,7 +67,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login setUser={setUser} setProfile={setProfile}  />}></Route>
           <Route path="register" element={<Register setUser={setUser} user={user} setProfile={setProfile}/>}></Route>
-          <Route path="profile" element={<Profile user={user}  render={render} setUser={setUser} setProfile={setProfile} profile={profile} />}></Route>
+          <Route path="profile" element={<Profile user={user}  render={render} setUser={setUser} setProfile={setProfile} profile={profile} map={map} setMap={setMap} />}></Route>
         </Routes>
         <div className="footer-div">
         {!render ? null : <MeetingRoomIcon onClick={()=>logoutUser()} fontSize="large"/>}

@@ -8,6 +8,7 @@ const Button = () => {
             <Link to="/register"><button className="our-button">Register Page</button></Link>
             <Link to="/"><button className="our-button">Login Page</button></Link>
             <Link to="/profile"><button className="our-button">Profile Page</button></Link>
+            <Link to="/MapContainer"><button className="our-button">Facility Search</button></Link>
         </div>
      );
 }
