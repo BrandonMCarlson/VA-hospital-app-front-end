@@ -9,9 +9,9 @@ const useForm = (callback) => {
         setFormValue(values => ({...values, [event.target.name]: event.target.value}));
     };
 
-    const handleSubmit = (event, comment=null) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        callback(comment);
+        callback();
         setFormValue("");
     };
 

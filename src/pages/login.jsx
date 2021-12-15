@@ -52,7 +52,7 @@ const Login = ({ setUser, setProfile }) => {
             <p></p>
             <TextField
               id="outlined-basic"
-              type="password"
+              type="text"
               name="password"
               label="Password"
               onChange={(event) => handleChange(event)}

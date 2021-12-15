@@ -61,6 +61,7 @@ function App() {
     <div className="App">
       <div>
       <div>
+    <MapContainer/>
     <NavBar setProfile={setProfile} setSearchText={setSearchText} user={user} profile={profile} render={render}/>
     <SearchBox allUsers={allUsers} setProfile={setProfile} searchText={searchText}/>
       <div>

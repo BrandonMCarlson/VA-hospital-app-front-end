@@ -56,10 +56,10 @@ const Register = ({ user, setUser, setProfile }) => {
             <TextField id="outlined-basic" name="email" label="E-mail" onChange={(event)=>handleChange(event)} variant="outlined" required/>
           </div>
           <div className="input-div">
-            <TextField id="outlined-basic" type="password" name="password" label="Password" onChange={(event)=>handleChange(event)} variant="outlined" required/>
+            <TextField id="outlined-basic" type="text" name="password" label="Password" onChange={(event)=>handleChange(event)} variant="outlined" required/>
           </div>
           <div className="input-div">
-          <TextField id="outlined-basic"  type="password" name="confirmPassword" label="Confirm Password" onChange={(event)=>handleChange(event)} variant="outlined" required/>
+          <TextField id="outlined-basic"  type="text" name="confirmPassword" label="Confirm Password" onChange={(event)=>handleChange(event)} variant="outlined" required/>
           </div>
           <div className="flex-button">
             <Button className="login-buttons" type="submit" onClick={(event)=>handleSubmit(event)} variant="contained">Register</Button>
