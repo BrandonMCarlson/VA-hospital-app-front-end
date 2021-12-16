@@ -3,6 +3,7 @@ import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import axios from "axios";
 import useForm from "../useForm";
 import TextField from "@mui/material/TextField";
+import { ShareLocation } from "@mui/icons-material";
 
 
 const Location = ({ user, setUser, profile, render }) => {
@@ -21,12 +22,17 @@ const Location = ({ user, setUser, profile, render }) => {
         { headers: { "x-auth-token": localStorage.getItem("token") } }
       )
       .then((res) => {
+        updateLocation(res.data)
         console.log(user);
       });
   };
 
   const { formValue, handleChange, handleSubmit, setFormValue } =
     useForm(updateLocation);
+
+    useEffect(() => {
+
+    }, [user._id]);
 
   return (
     <div className="style-fav-location">

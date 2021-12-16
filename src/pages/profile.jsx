@@ -32,6 +32,8 @@ const Profile = ({
             setUser={setUser}
             facility={facility}
             setFacility={setFacility}
+            location={location}
+            setLocation={setLocation}
           />
         </div>
       </div>
