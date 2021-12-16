@@ -27,7 +27,7 @@ const Location = ({ user, setUser, profile }) => {
         console.log(user);
       });
   };
-
+  setFormValue();
   const { formValue, handleChange, handleSubmit, setFormValue } =
     useForm(updateLocation);
 

@@ -3,6 +3,7 @@ import { Routes, Link, Route, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import useForm from "../useForm";
+import Buttons from "../components/Button";
 import TextField from "@mui/material/TextField";
 import Button from '@mui/material/Button';
 
@@ -32,9 +33,20 @@ const Register = ({ user, setUser, setProfile }) => {
         navigate("/profile");
         console.log("token", res.headers["x-auth-token"]);
       })
-      .catch((error) => console.log(error));
-    console.log(user);
+      .catch(function (error) {
+        if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log("Error", error.message);
+        }
+        console.log(error.config);
+      });
   };
+  
   
   const { formValue, handleChange, handleSubmit, setFormValue } =
     useForm(registerUser);
@@ -59,7 +71,7 @@ const Register = ({ user, setUser, setProfile }) => {
             <TextField id="outlined-basic" type="password" name="password" label="Password" onChange={(event)=>handleChange(event)} variant="outlined" required/>
           </div>
           <div className="input-div">
-          <TextField id="outlined-basic"  type="password" name="confirmPassword" label="Confirm Password" onChange={(event)=>handleChange(event)} variant="outlined" required/>
+          <TextField id="outlined-basic"  type="password" name="password" label="Confirm Password" onChange={(event)=>handleChange(event)} variant="outlined" required/>
           </div>
           <div className="flex-button">
             <Button className="login-buttons" type="submit" onClick={(event)=>handleSubmit(event)} variant="contained">Register</Button>
