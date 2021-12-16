@@ -43,7 +43,7 @@ function App() {
   const getFacility = async () => {
     await axios
       .get(
-        "https://api.va.gov/services/community-care/v0/eligibility/openapi.json"
+        "https://api.va.gov/services/va_facilities/v0"
       )
       .then((res) => {
         setAllFacilities(res.data);
