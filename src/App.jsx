@@ -26,7 +26,7 @@ function App() {
   const render = localStorage.getItem("token");
 
   const getAllUsers = async () => {
-    await axios.get("http://localhost:5000/api/users").then((res) => {
+    await axios.get("http://localhost:3000/api/users").then((res) => {
       setAllUsers(res.data);
       console.log(res.data);
     });
