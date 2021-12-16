@@ -21,6 +21,7 @@ const Register = ({ user, setUser, setProfile }) => {
     form.append('email', formValue.email);
     form.append('password', formValue.password);
 
+    setFormValue(form);
     await axios
       .post("http://localhost:5000/api/users/register", form)
       .then((res) => {
@@ -55,7 +56,7 @@ const Register = ({ user, setUser, setProfile }) => {
             <TextField id="outlined-basic" name="email" label="E-mail" onChange={(event)=>handleChange(event)} variant="outlined" required/>
           </div>
           <div className="input-div">
-            <TextField id="outlined-basic" type="text" name="password" label="Password" onChange={(event)=>handleChange(event)} variant="outlined" required/>
+            <TextField id="outlined-basic" type="password" name="password" label="Password" onChange={(event)=>handleChange(event)} variant="outlined" required/>
           </div>
           <div className="input-div">
           <TextField id="outlined-basic"  type="password" name="confirmPassword" label="Confirm Password" onChange={(event)=>handleChange(event)} variant="outlined" required/>
