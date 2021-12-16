@@ -12,6 +12,7 @@ const FindFacility = ({ setUser, setFacility }) => {
     await axios
       .get(
         "https://api.va.gov/internal/docs/facilities/v0/openapi.json"
+
       )
       .then((res) => {
         FindFacility(res.data);

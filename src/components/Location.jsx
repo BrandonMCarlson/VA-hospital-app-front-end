@@ -6,7 +6,7 @@ import TextField from "@mui/material/TextField";
 import { ShareLocation } from "@mui/icons-material";
 
 
-const Location = ({ user, setUser, profile, render }) => {
+const Location = ({ user, setUser, profile }) => {
 
   const updateLocation = async () => {
     await axios
@@ -23,6 +23,7 @@ const Location = ({ user, setUser, profile, render }) => {
       )
       .then((res) => {
         updateLocation(res.data)
+        document.getElementById("location").disabled = true;
         console.log(user);
       });
   };
