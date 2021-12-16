@@ -6,6 +6,7 @@ import jwtDecode from "jwt-decode";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 
+
 const Login = ({ setUser, setProfile }) => {
   const navigate = useNavigate();
 
@@ -52,7 +53,7 @@ const Login = ({ setUser, setProfile }) => {
             <p></p>
             <TextField
               id="outlined-basic"
-              type="text"
+              type="password"
               name="password"
               label="Password"
               onChange={(event) => handleChange(event)}

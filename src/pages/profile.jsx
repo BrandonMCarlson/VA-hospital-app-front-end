@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Location from "../components/Location";
+import "./Profile.css"
 
 const Profile = ({
   user,
@@ -24,7 +25,7 @@ const Profile = ({
     <div>
       <div className="profile-page-grid">
         <div className="post-text">
-          <favFacility
+          <Location
             render={render}
             profile={profile}
             user={user}

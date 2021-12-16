@@ -3,14 +3,14 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MapContainer from "./pages/MapContainer";
-import Register from "./pages/register";
+import Register from "./pages/Register";
 import { Routes, Link, Route, useParams, useNavigate } from "react-router-dom";
-import NavBar from "./components/navbar";
-import Login from "./pages/login";
+import NavBar from "./components/Navbar";
+import Login from "./pages/Login";
 import SearchBox from "./components/SearchBox";
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
-import Profile from "./pages/profile";
-import Welcome from "./pages/welcome";
+import Profile from "./pages/Profile";
+import Welcome from "./pages/Welcome";
 
 
 
@@ -61,14 +61,14 @@ function App() {
     <div className="App">
       <div>
       <div>
-    <MapContainer/>
     <NavBar setProfile={setProfile} setSearchText={setSearchText} user={user} profile={profile} render={render}/>
     <SearchBox allUsers={allUsers} setProfile={setProfile} searchText={searchText}/>
       <div>
         <Routes>
           <Route path="/" element={<Login setUser={setUser} setProfile={setProfile}  />}></Route>
           <Route path="register" element={<Register setUser={setUser} user={user} setProfile={setProfile}/>}></Route>
-          <Route path="profile" element={<Profile user={user}  render={render} setUser={setUser} setProfile={setProfile} profile={profile} map={map} setMap={setMap} />}></Route>
+          <Route path="profile" element={<Profile user={user}  render={render} setUser={setUser} setProfile={setProfile} profile={profile} map={map} setMap={setMap} facility={facility} setFacility={setFacility} />}></Route>
+          <Route path="MapContainer" element={<MapContainer map={map} setMap={setMap} allFacilities={allFacilities} setAllFacilities={setAllFacilities} />}></Route>
         </Routes>
         <div className="footer-div">
         {!render ? null : <MeetingRoomIcon onClick={()=>logoutUser()} fontSize="large"/>}
