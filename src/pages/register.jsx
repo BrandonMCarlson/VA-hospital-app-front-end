@@ -12,19 +12,21 @@ const Register = ({ user, setUser, setProfile }) => {
   const navigate = useNavigate();
 
   const registerUser = async () => {
+    console.log(formValue.password)
+    console.log(formValue.confirmPassword)
     if (formValue.password !== formValue.confirmPassword) {
       alert("Passwords do not match!");
       return;
-    }
-    const form = new FormData();
-    form.append('firstName', formValue.firstName);
-    form.append('lastName', formValue.lastName);
-    form.append('email', formValue.email);
-    form.append('password', formValue.password);
+  }
 
-    setFormValue(form);
     await axios
-      .post("http://localhost:5000/api/users/register", form)
+      .post("http://localhost:5000/api/users/register", {
+        firstName: formValue.firstName,
+        lastName:  formValue.lastName,
+        email:  formValue.email,
+        password:  formValue.password,
+})
+
       .then((res) => {
         localStorage.setItem("token", res.headers["x-auth-token"]);
         const user = jwtDecode(localStorage.getItem("token"));
@@ -71,7 +73,7 @@ const Register = ({ user, setUser, setProfile }) => {
             <TextField id="outlined-basic" type="password" name="password" label="Password" onChange={(event)=>handleChange(event)} variant="outlined" required/>
           </div>
           <div className="input-div">
-          <TextField id="outlined-basic"  type="password" name="password" label="Confirm Password" onChange={(event)=>handleChange(event)} variant="outlined" required/>
+          <TextField id="outlined-basic"  type="password" name="confirmPassword"  label="Confirm Password" onChange={(event)=>handleChange(event)} variant="outlined" required/>
           </div>
           <div className="flex-button">
             <Button className="login-buttons" type="submit" onClick={(event)=>handleSubmit(event)} variant="contained">Register</Button>
