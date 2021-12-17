@@ -1,7 +1,7 @@
 import React from "react";
 import "../components/SearchBox.css";
 
-const SearchBox = ({searchText, setProfile, allUsers}) => {
+const SearchBox = ({searchText, setProfile, allUsers, allFacilities}) => {
   
   const handleClick = (profile) => {
  document.getElementById('search').value = ''
@@ -13,7 +13,7 @@ const SearchBox = ({searchText, setProfile, allUsers}) => {
       {" "}
       {searchText === "" ? null : (
         <ul className="search-ul">
-          {allUsers.map((profile, index) =>
+          {allFacilities.map((profile, index) =>
             profile.firstName.toLowerCase().includes(searchText.toLowerCase()) ||
             profile.lastName.toLowerCase().includes(searchText.toLowerCase())
             ? (

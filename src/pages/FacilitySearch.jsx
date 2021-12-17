@@ -8,19 +8,23 @@ import TextField from "@mui/material/TextField";
 
 
 
-const FindFacility = ({ facility, setfacility }) => {
-  const address = '949 E 34th Ave'
-  address.replace(/\s/g, '%20')
+const FindFacility = ({ facility, setFacility, street_address }) => {
   
 
+   
+
   const getFacility = async () => {
+    const address = `${street_address}`
+    address.replace(/\s/g, '%20')
+   
     await axios
       .get(
-        `https://sandbox-api.va.gov/services/va_facilities/v0/nearby?/${street_address}/${city}/${state}/${zip}`, {
+        `https://sandbox-api.va.gov/services/va_facilities/v0/nearby?/street_address=${formValue.street_address}&city=${formValue.city}&state=${formValue.state}&zip=${formValue.zip}`, {
           headers:{apiKey: 'eKyzvJo6cvxSR6S4PrI30CPXRCyQ7nDY' }})
+        
       .then((res) => {
-        getFacility(res.data.drive_time);
-        console.log(res.data.nearby);
+        setFacility(res.data.id);
+        console.log(res.data);
       })
       .catch(function (error) {
         if (error.response) {
@@ -59,7 +63,7 @@ const FindFacility = ({ facility, setfacility }) => {
             <TextField id="outlined-basic" name="zip" label="Zip-Code" onChange={(event)=>handleChange(event)} variant="outlined" required/>
           </div>
           <div className="flex-button">
-            <Button facility={facility} setfacility={setfacility} className="Search-Button" type="submit" onClick={(event)=>handleSubmit(event)} variant="contained">Search</Button>
+            <Button facility={facility} className="Search-Button" type="submit" onClick={(event)=>handleSubmit(event)} variant="contained">Search</Button>
           </div>
       </div>
     </div>
