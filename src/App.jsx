@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FacilitySearch from "./pages/FacilitySearch"
 import Register from "./pages/Register";
-import { Routes, Link, Route, useParams, useNavigate } from "react-router-dom";
+import { Routes, Link, Route, useParams, useNavigate, Navigate } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Login from "./pages/Login";
 import SearchBox from "./components/SearchBox";
@@ -24,6 +24,8 @@ function App() {
   const [map, setMap] = useState({});
 
   const render = localStorage.getItem("token");
+  const navigate = useNavigate();
+
 
   const getAllUsers = async () => {
     await axios.get("http://localhost:3000/api/users").then((res) => {
@@ -36,25 +38,13 @@ function App() {
     console.log(localStorage.getItem("token"));
     localStorage.removeItem("token");
     setUser(null);
-
+    navigate("/");
     console.log(localStorage.getItem("token"));
-  };
-
-  const getFacility = async () => {
-    await axios
-      .get(
-        "https://api.va.gov/internal/docs/facilities/v0/openapi.json"
-      )
-      .then((res) => {
-        setAllFacilities(res.data);
-        console.log(res.data);
-      });
   };
 
 
   useEffect(() => {
     getAllUsers();
-    getFacility();
   }, []);
 
   return (

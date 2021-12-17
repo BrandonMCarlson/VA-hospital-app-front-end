@@ -22,18 +22,25 @@ const Location = ({ user, setUser, profile }) => {
         { headers: { "x-auth-token": localStorage.getItem("token") } }
       )
       .then((res) => {
-        updateLocation(res.data)
-        document.getElementById("location").disabled = true;
         console.log(user);
+      })
+      .catch(function (error) {
+        if (error.response) {
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log("Error", error.message);
+        }
+        console.log(error.config);
       });
   };
   
   const { formValue, handleChange, handleSubmit, setFormValue } =
     useForm(updateLocation);
 
-    useEffect(() => {
-
-    }, [user._id]);
 
   return (
     <div className="style-fav-location">
@@ -45,7 +52,7 @@ const Location = ({ user, setUser, profile }) => {
         label="location"
         multiline
         InputLabelProps={{ shrink: true }}
-        defaultValue={profile.aboutMe}
+        defaultValue={profile.location}
         onChange={(event) => handleChange(event)}
         name="location"
       />}
