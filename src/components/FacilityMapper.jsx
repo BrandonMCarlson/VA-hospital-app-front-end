@@ -1,25 +1,18 @@
-// import TextField from "@mui/material/TextField";
-// import useForm from "../useForm";
-// import React from 'react';
+import TextField from "@mui/material/TextField";
+import useForm from "../useForm";
+import React from "react";
 
+const FacilityMapper = () => {
 
+    const facilities = [];
 
-// const FacilityMapper = () => {
+  return (
+    <div>
+    <ul>
+        {facilities.map(facility => <li> Name: {facility.data.attributes.id}</li>)}
+    </ul>
+  </div> 
+  );
+}
 
-//     const [facilities, setFacilities]=useState({});
-//     const [setFacility, setAllFaciltiies]=useState({});
-
-    
-    
-//     const { formValue, handleChange, handleSubmit, setFormValue } =
-//     useForm(FacilityMapper);
-
-
-//     return (
-//     <div> 
-//         
-//         </div>
-//      );
-// }
- 
-// export default FacilityMapper;
+export default FacilityMapper;

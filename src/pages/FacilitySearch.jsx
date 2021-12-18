@@ -18,14 +18,14 @@ const FacilitySearch = ({}) => {
   const { formValue, handleChange, handleSubmit, setFormValue } = useForm(getFacilities);
 
   async function getFacilities () {
-    const {street_address, city, state, zip} = formValue;
+    const {street_address, city, state, zip, idArray} = formValue;
 ;
     street_address.replace(/\s/g, "%20");
     city.replace(/\s/g, "%20");
     state.replace(/\s/g, "%20");
     zip.replace(/\s/g, "%20");
 
-    await axios
+      await axios
       .get(
         `https://sandbox-api.va.gov/services/va_facilities/v0/nearby?street_address=${street_address}&city=${city}&state=${state}&zip=${zip}&drive_time=60`,
         {
@@ -34,12 +34,20 @@ const FacilitySearch = ({}) => {
       )
 
       .then((res) => {
-        setFacilities(res.data.data);
+        setFacilities(res.data.data)
         res.data.data.map((el) => {
           idArray.push(el.id);
         });
         idArray = idArray.join("%2C");
         console.log(idArray);
+        console.log(res.data.data);
+        return axios.get(`https://sandbox-api.va.gov/services/va_facilities/v0/facilities?ids=${idArray}`,
+        {
+          headers: { apiKey: "ks9OZMlUje9CyqGLP2RtQ4Yx9lxBLqvq" },
+        })
+      })
+      .then((res) => {
+        setFacilities(res.data[0].attributes);
         console.log(res.data.data);
       })
       .catch(function (error) {
@@ -56,41 +64,14 @@ const FacilitySearch = ({}) => {
       });
   };
 
-  // async function getInfo () {
-  //   const {idArray} = useState({})
-  //   await axios 
-  //   .get(`https://sandbox-api.va.gov/services/va_facilities/v0/facilities?ids=${idArray}`,
-  //   {headers: { apiKey: "ks9OZMlUje9CyqGLP2RtQ4Yx9lxBLqvq" },
-  // }
-  // )
-
-  // .then((res) => {
-  //   setFacilities(res.data.name);
-  //   console.log(res.data.name);
-  // })
-  
-  // .catch(function (error) {
-  //   if (error.response) {
-  //     console.log(error.response.data);
-  //     console.log(error.response.status);
-  //     console.log(error.response.headers);
-  //   } else if (error.request) {
-  //     console.log(error.request);
-  //   } else {
-  //     console.log("Error", error.message);
-  //   }
-  //   console.log(error.config);
-  // });
-
-
 
   return (
     <div className="facility-finder">
       <div>
-        <MapContainer />
+        {/* <MapContainer /> */}
         <form onSubmit={(event) => handleSubmit(event)}>
           <div>
-            <h1 className="heading">Register Below</h1>
+            <h1 className="heading">Search Below</h1>
           </div>
           <div className="input-div">
             <TextField
@@ -144,6 +125,7 @@ const FacilitySearch = ({}) => {
         </div>
       </form>
         <h1>Here are the facilities near you!</h1>
+        <FacilityMapper facilities={facilities}/>
       </div>
     </div>
   );
