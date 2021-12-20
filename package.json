@@ -16,6 +16,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.24.0",
+    "config": "^3.3.6",
     "curl": "^0.1.4",
     "google-maps-react": "^2.0.6",
     "googleapis": "^92.0.0",

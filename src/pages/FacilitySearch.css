@@ -1,0 +1,23 @@
+div{
+    position: relative;
+}
+
+.heading{
+    text-align: center;
+}
+input{
+    position: relative;
+}
+h1{
+    text-align: center;
+}
+.css-tzssek-MuiSvgIcon-root{
+    position:relative;
+}
+
+li{
+    font-size: 12;
+}
+p{
+    text-decoration: underline;
+}

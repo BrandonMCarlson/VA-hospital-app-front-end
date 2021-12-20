@@ -28,6 +28,7 @@ const Profile = ({
           <Location
             render={render}
             profile={profile}
+            setProfile={setProfile}
             user={user}
             setUser={setUser}
             facility={facility}

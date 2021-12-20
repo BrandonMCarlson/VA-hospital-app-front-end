@@ -1,15 +1,22 @@
-import TextField from "@mui/material/TextField";
-import useForm from "../useForm";
 import React from "react";
+import "../components/FacilityMapper.css";
 
-const FacilityMapper = () => {
+const FacilityMapper = ({facilities}) => {
 
-    const facilities = [];
 
   return (
-    <div>
+    <div className="results">
     <ul>
-        {facilities.map(facility => <li> Name: {facility.data.attributes.id}</li>)}
+      {!facilities ? null : facilities.map((facility) =>{
+          return (
+            <li className="results-view">
+           <p>Facility Name: {facility.attributes.name} </p> 
+           <p>Facility Address: {facility.attributes ? null : facility.attributes.address.physical.address_1}</p> 
+           <p> Facility Website: {facility.attributes.website === null ? "no website" : facility.attributes.website}</p> 
+           <p> Facility Number: {facility.attributes.phone.main === null ? "no main number" : facility.attributes.phone.main}</p> 
+          </li>
+          )
+      })}
     </ul>
   </div> 
   );

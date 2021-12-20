@@ -42,22 +42,10 @@ function App() {
     console.log(localStorage.getItem("token"));
   };
   
-  const getFacilities = async () => {
-    await axios.get(`https://sandbox-api.va.gov/services/va_facilities/v0/facilities/all`, {
-      headers:{apiKey: 'eKyzvJo6cvxSR6S4PrI30CPXRCyQ7nDY' }})
-      .then((res) => {
-      setAllFacilities(res.data);
-      console.log(res.data);
-    });
-  };
-
-
-
 
 
   useEffect(() => {
     getAllUsers();
-    getFacilities();
   }, []);
 
   return (

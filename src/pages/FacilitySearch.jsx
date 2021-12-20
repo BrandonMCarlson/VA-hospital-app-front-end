@@ -6,9 +6,12 @@ import Button from "@mui/material/Button";
 import FacilityMapper from "../components/FacilityMapper";
 import useForm from "../useForm";
 import TextField from "@mui/material/TextField";
+import "../pages/FacilitySearch.css";
+
 
 const FacilitySearch = ({}) => {
   const [facilities, setFacilities] = useState([]);
+
   
   let idArray = [];
   // destructure useForm
@@ -18,8 +21,8 @@ const FacilitySearch = ({}) => {
   const { formValue, handleChange, handleSubmit, setFormValue } = useForm(getFacilities);
 
   async function getFacilities () {
-    const {street_address, city, state, zip, idArray} = formValue;
-;
+    const {street_address, city, state, zip} = formValue;
+
     street_address.replace(/\s/g, "%20");
     city.replace(/\s/g, "%20");
     state.replace(/\s/g, "%20");
@@ -29,26 +32,22 @@ const FacilitySearch = ({}) => {
       .get(
         `https://sandbox-api.va.gov/services/va_facilities/v0/nearby?street_address=${street_address}&city=${city}&state=${state}&zip=${zip}&drive_time=60`,
         {
-          headers: { apiKey: "ks9OZMlUje9CyqGLP2RtQ4Yx9lxBLqvq" },
+          headers: { apikey: 'ks9OZMlUje9CyqGLP2RtQ4Yx9lxBLqvq' },
         }
       )
 
       .then((res) => {
-        setFacilities(res.data.data)
         res.data.data.map((el) => {
           idArray.push(el.id);
         });
         idArray = idArray.join("%2C");
-        console.log(idArray);
-        console.log(res.data.data);
         return axios.get(`https://sandbox-api.va.gov/services/va_facilities/v0/facilities?ids=${idArray}`,
         {
-          headers: { apiKey: "ks9OZMlUje9CyqGLP2RtQ4Yx9lxBLqvq" },
+          headers: { apikey: 'ks9OZMlUje9CyqGLP2RtQ4Yx9lxBLqvq' },
         })
       })
       .then((res) => {
-        setFacilities(res.data[0].attributes);
-        console.log(res.data.data);
+        setFacilities(res.data.data);
       })
       .catch(function (error) {
         if (error.response) {
@@ -68,7 +67,7 @@ const FacilitySearch = ({}) => {
   return (
     <div className="facility-finder">
       <div>
-        {/* <MapContainer /> */}
+        <MapContainer />
         <form onSubmit={(event) => handleSubmit(event)}>
           <div>
             <h1 className="heading">Search Below</h1>
