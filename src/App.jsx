@@ -19,19 +19,25 @@ function App() {
   const [profile, setProfile] = useState({});
   const [searchText, setSearchText] = useState("");
   const [facility, setFacility] = useState({});
-  const [allFacilities, setAllFacilities] = useState({});
-  const [map, setMap] = useState({});
 
   const render = localStorage.getItem("token");
   const navigate = useNavigate();
 
 
   const getAllUsers = async () => {
-    await axios.get("http://localhost:3000/api/users").then((res) => {
+    await axios.get("http://localhost:5000/api/users").then((res) => {
       setAllUsers(res.data);
       console.log(res.data);
     });
   };
+
+  const getUser = async () => {
+    await axios.get(`http://localhost:5000/api/users/${user._id}`).then((res) => {
+      setUser(res.data);
+      console.log(res.data);
+    });
+  };
+
 
   const logoutUser = async () => {
     console.log(localStorage.getItem("token"));
@@ -56,8 +62,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Login setUser={setUser} setProfile={setProfile}  />}></Route>
           <Route path="register" element={<Register setUser={setUser} user={user} setProfile={setProfile}/>}></Route>
-          <Route path="profile" element={<Profile user={user}  render={render} setUser={setUser} setProfile={setProfile} profile={profile} map={map} setMap={setMap} facility={facility} setFacility={setFacility} />}></Route>
-          <Route path="FacilitySearch" element={<FacilitySearch map={map} setMap={setMap} allFacilities={allFacilities} setAllFacilities={setAllFacilities} />}></Route>
+          <Route path="profile" element={<Profile user={user}  render={render} setUser={setUser} setProfile={setProfile} profile={profile} facility={facility} setFacility={setFacility} setUser={setUser} getUser={getUser} />}></Route>
+          <Route path="FacilitySearch" element={<FacilitySearch facility={facility} setFacility={setFacility} />}></Route>
         </Routes>
         <div className="footer-div">
         {!render ? null : <MeetingRoomIcon onClick={()=>logoutUser()} fontSize="large"/>}

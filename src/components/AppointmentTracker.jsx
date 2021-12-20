@@ -11,17 +11,22 @@ import useForm from "../useForm";
 import axios from "axios";
 
 
-export default function AppointmentTracker({setProfile, user, user_id}) {
+export default function AppointmentTracker({user, setUser, getUser}) {
 
   const AddAppointment = async () => {
     axios
-    .put(`http://localhost:5000/api/users/${user_id}`, {
-      appointment: formValue.appointment
+    .put(`http://localhost:5000/api/users/${user._id}`, {
+      appointment: {
+        date: formValue.date,
+        time: formValue.time,
+        location: formValue.location,
+        number: formValue.number,
+    }
   },
   { headers: { 'x-auth-token': localStorage.getItem('token') } })
   .then((res)=> {
-      document.getElementById('put').value = ''
-      setProfile(user)
+      setUser(res.data)
+      console.log(user)
     })
      .catch((error)=> {
       if (error.response) {
@@ -44,7 +49,7 @@ export default function AppointmentTracker({setProfile, user, user_id}) {
     
   return (
       <div>
-      <h1>Appointment Tracker</h1>
+      <h1>Appointment Input</h1>
     <Box sx={{ '& > :not(style)': { m: 1 } }}>
       <FormControl variant="standard">
         <InputLabel htmlFor="input-with-icon-adornment">
@@ -52,7 +57,7 @@ export default function AppointmentTracker({setProfile, user, user_id}) {
         </InputLabel>
         <Input
           id="input-with-icon-adornment"
-          name="appointment"
+          name="date"
           onChange={(event)=>handleChange(event)}
           startAdornment={
             <InputAdornment position="start">
@@ -64,7 +69,7 @@ export default function AppointmentTracker({setProfile, user, user_id}) {
       <TextField
         id="input-with-icon-textfield"
         label="Time"
-        name="appointment"
+        name="time"
         onChange={(event)=>handleChange(event)}
         InputProps={{
           startAdornment: (
@@ -78,7 +83,7 @@ export default function AppointmentTracker({setProfile, user, user_id}) {
       <TextField
         id="input-with-icon-textfield"
         label="Location"
-        name="appointment"
+        name="location"
         onChange={(event)=>handleChange(event)}
         InputProps={{
           startAdornment: (
@@ -92,7 +97,7 @@ export default function AppointmentTracker({setProfile, user, user_id}) {
       <TextField
         id="input-with-icon-textfield"
         label="Number"
-        name="appointment"
+        name="number"
         onChange={(event)=>handleChange(event)}
         InputProps={{
           startAdornment: (

@@ -12,7 +12,8 @@ const FacilityMapper = ({facilities}) => {
            <p>Facility Name: {facility.attributes.name} </p> 
            <p>Facility Address: {facility.attributes.address.physical.address_1}</p> 
            <p>Facility Website: {facility.attributes.website === null ? "no website" : facility.attributes.website}</p> 
-           <p>Facility Number: {facility.attributes.phone.main === null ? "no main number" : facility.attributes.phone.main}</p> 
+           <p>Facility Number: {facility.attributes.phone.main === null ? "no main number" : facility.attributes.phone.main}</p>
+           <button> onClick={}</button> 
           </li>
           )
       })}

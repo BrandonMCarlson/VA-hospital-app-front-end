@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import AppointmentTracker from "../components/AppointmentTracker";
 
+
 import "./Profile.css"
 
 const Profile = ({
@@ -11,6 +12,9 @@ const Profile = ({
   render,
   facility,
   setFacility,
+  getUser,
+  facilities,
+  getFacilities,
 }) => {
   const [value, setValue] = React.useState("1");
 
@@ -25,7 +29,12 @@ const Profile = ({
       <div className="profile-page-grid">
         <div className="post-text">
           <h1>{profile.firstName}</h1>
-          <AppointmentTracker/>
+          <h2>Appointment Tracker</h2>
+          <div>Date: {user.appointment.date} <br/>
+          Time: {user.appointment.time}  <br/>
+          Location: {user.appointment.location}  <br/>
+          Phone: {user.appointment.number} </div>
+          <AppointmentTracker user={user} setUser={setUser} getUser={getUser}/>
         </div>
       </div>
     </div>
