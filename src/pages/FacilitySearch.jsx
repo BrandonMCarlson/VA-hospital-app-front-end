@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Routes, Link, Route, useParams } from "react-router-dom";
 import axios from "axios";
-import MapContainer from "../components/MapContainer";
 import Button from "@mui/material/Button";
 import FacilityMapper from "../components/FacilityMapper";
 import useForm from "../useForm";
@@ -67,7 +66,6 @@ const FacilitySearch = ({}) => {
   return (
     <div className="facility-finder">
       <div>
-        <MapContainer />
         <form onSubmit={(event) => handleSubmit(event)}>
           <div>
             <h1 className="heading">Search Below</h1>
@@ -123,7 +121,7 @@ const FacilitySearch = ({}) => {
           </Button>{" "}
         </div>
       </form>
-        <h1>Here are the facilities near you!</h1>
+        <h1>These are your Facilities within 60 minutes!</h1>
         <FacilityMapper facilities={facilities}/>
       </div>
     </div>

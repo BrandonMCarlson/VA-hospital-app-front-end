@@ -15,7 +15,7 @@ export default function ButtonAppBar() {
         <Toolbar>
         <Link to={"/"} style={{ textDecoration: 'none', color: 'white'}}>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Veteran Affairs Health Helper
+            Veteran Affairs Health App!
           </Typography>
           </Link>
           <Link to={"/FacilitySearch"} style={{ textDecoration: 'none', color: 'white'}}>

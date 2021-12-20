@@ -7,7 +7,6 @@ import Register from "./pages/Register";
 import { Routes, Link, Route, useParams, useNavigate, Navigate } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Login from "./pages/Login";
-import SearchBox from "./components/SearchBox";
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 import Profile from "./pages/Profile";
 import Welcome from "./pages/Welcome";
@@ -53,7 +52,6 @@ function App() {
       <div>
       <div>
     <NavBar setProfile={setProfile} setSearchText={setSearchText} user={user} profile={profile} render={render}/>
-    <SearchBox allUsers={allUsers} setProfile={setProfile} searchText={searchText}/>
       <div>
         <Routes>
           <Route path="/" element={<Login setUser={setUser} setProfile={setProfile}  />}></Route>

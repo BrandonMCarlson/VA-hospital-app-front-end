@@ -1,5 +1,4 @@
 .profile-page-grid{
-    display: grid;
     grid-template-columns: 0.6fr 1.5fr 1fr;
 }
 
