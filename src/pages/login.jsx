@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Link, Route, useParams, useNavigate } from "react-router-dom";
+import React, {useEffect } from "react";
+import {  Link, useNavigate } from "react-router-dom";
 import useForm from "../useForm";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
@@ -26,7 +26,7 @@ const Login = ({ setUser, setProfile }) => {
       .catch((error) => console.log(error));
   };
 
-  const { formValue, handleChange, handleSubmit, setFormValue } =
+  const { formValue, handleChange, handleSubmit } =
     useForm(loginUser);
 
   useEffect(() => {

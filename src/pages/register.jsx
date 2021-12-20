@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Link, Route, useParams, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import useForm from "../useForm";
-import Buttons from "../components/Button";
 import TextField from "@mui/material/TextField";
 import Button from '@mui/material/Button';
 import "../pages/Register.css";
@@ -51,7 +50,7 @@ const Register = ({ user, setUser, setProfile }) => {
   };
   
   
-  const { formValue, handleChange, handleSubmit, setFormValue } =
+  const { formValue, handleChange, handleSubmit } =
     useForm(registerUser);
 
   return (
@@ -81,7 +80,7 @@ const Register = ({ user, setUser, setProfile }) => {
           </div>
           <div className="terms">
                 By creating an account you agree to our
-                <p>Terms of <a target="_blank" href="https://www.va.gov/privacy-policy/">Service and Privacy Policy</a></p> 
+                <p>Terms of <a target="blank" href="https://www.va.gov/privacy-policy/">Service and Privacy Policy</a></p> 
           </div>
         </form>
       </div>

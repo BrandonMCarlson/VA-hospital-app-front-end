@@ -101,3 +101,7 @@ label[data-shrink=false]+.MuiInputBase-formControl .css-1sqnrkk-MuiInputBase-inp
 .css-sghohy-MuiButtonBase-root-MuiButton-root{
     background-color: black;
 }
+
+.appt{
+    border-style: solid;
+}

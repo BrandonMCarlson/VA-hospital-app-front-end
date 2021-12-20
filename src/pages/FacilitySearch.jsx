@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { Routes, Link, Route, useParams } from "react-router-dom";
+import React, { useState } from "react";
 import axios from "axios";
 import Button from "@mui/material/Button";
 import FacilityMapper from "../components/FacilityMapper";
@@ -17,7 +16,7 @@ const FacilitySearch = ({}) => {
   // declare callback to be sent into useForm
   //  //destructuring the formValue in order to grab individual fields
   //  //removing whitespace (opt)
-  const { formValue, handleChange, handleSubmit, setFormValue } = useForm(getFacilities);
+  const { formValue, handleChange, handleSubmit } = useForm(getFacilities);
 
   async function getFacilities () {
     const {street_address, city, state, zip} = formValue;

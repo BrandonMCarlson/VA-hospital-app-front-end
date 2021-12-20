@@ -1,10 +1,10 @@
-import { Map, GoogleApiWrapper } from "google-maps-react";
+
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FacilitySearch from "./pages/FacilitySearch"
 import Register from "./pages/Register";
-import { Routes, Link, Route, useParams, useNavigate, Navigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 import NavBar from "./components/Navbar";
 import Login from "./pages/Login";
 import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
@@ -19,7 +19,6 @@ function App() {
   const [profile, setProfile] = useState({});
   const [searchText, setSearchText] = useState("");
   const [facility, setFacility] = useState({});
-
   const render = localStorage.getItem("token");
   const navigate = useNavigate();
 

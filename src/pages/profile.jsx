@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import AppointmentTracker from "../components/AppointmentTracker";
 
 
@@ -28,9 +28,9 @@ const Profile = ({
     <div>
       <div className="profile-page-grid">
         <div className="post-text">
-          <h1>{profile.firstName}</h1>
+          <h1>{profile.firstName}'s</h1>
           <h2>Appointment Tracker</h2>
-          <div>Date: {user.appointment.date} <br/>
+          <div className="appt">Date: {user.appointment.date} <br/>
           Time: {user.appointment.time}  <br/>
           Location: {user.appointment.location}  <br/>
           Phone: {user.appointment.number} </div>

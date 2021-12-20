@@ -1,14 +1,14 @@
-export default function AppointmentTracker({setProfile, user, setUser, render, allUsers, user_id, facility, favFacility}) {
+export default function AppointmentTracker({user, setUser, render, allUsers, facilities, favFacility}) {
 
     const favFacility = async () => {
       axios
-      .post(`http://localhost:5000/api/users/${user_id}`, {
+      .post(`http://localhost:5000/api/users/${user._id}`, {
         favFacility: 
     },
     { headers: { 'x-auth-token': localStorage.getItem('token') } })
     .then((res)=> {
-        document.getElementById('put').value = ''
-        setProfile(user)})
+        setUser(res.data)
+    })
        .catch((error)=> {
         if (error.response) {
           console.log(error.response.data);
