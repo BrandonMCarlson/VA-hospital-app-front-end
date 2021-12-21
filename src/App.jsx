@@ -17,8 +17,8 @@ function App() {
   const [user, setUser] = useState({});
   const [allUsers, setAllUsers] = useState([]);
   const [profile, setProfile] = useState({});
-  const [searchText, setSearchText] = useState("");
   const [facility, setFacility] = useState({});
+  const [favorite, setFavorite] = useState({});
   const render = localStorage.getItem("token");
   const navigate = useNavigate();
 
@@ -56,7 +56,7 @@ function App() {
     <div className="App">
       <div>
       <div>
-    <NavBar setProfile={setProfile} setSearchText={setSearchText} user={user} profile={profile} render={render}/>
+    <NavBar setProfile={setProfile} user={user} profile={profile} render={render}/>
       <div>
         <Routes>
           <Route path="/" element={<Login setUser={setUser} setProfile={setProfile}  />}></Route>

@@ -1,11 +1,10 @@
-import React, {useEffect } from "react";
-import {  Link, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import useForm from "../useForm";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-
 
 const Login = ({ setUser, setProfile }) => {
   const navigate = useNavigate();
@@ -22,22 +21,20 @@ const Login = ({ setUser, setProfile }) => {
         setUser(user);
         setProfile(user);
         navigate("/profile");
+        
       })
       .catch((error) => console.log(error));
   };
 
-  const { formValue, handleChange, handleSubmit } =
-    useForm(loginUser);
+  const { formValue, handleChange, handleSubmit } = useForm(loginUser);
 
-  useEffect(() => {
-    
-  }, []);
+  useEffect(() => {}, []);
 
   return (
     <div className="whole-login-div">
       <div>
         <div className="login-title">
-          <h1>Veteran Affairs Health Helper</h1>
+          <h1>Your Health Matters!</h1>
           <br></br>
           <h1>Login</h1>
         </div>

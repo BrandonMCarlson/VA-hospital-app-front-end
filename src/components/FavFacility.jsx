@@ -1,15 +1,32 @@
-export default function AppointmentTracker({user, setUser, render, allUsers, facilities, favFacility}) {
-
-    const favFacility = async () => {
-      axios
-      .post(`http://localhost:5000/api/users/${user._id}`, {
-        favFacility: 
-    },
-    { headers: { 'x-auth-token': localStorage.getItem('token') } })
-    .then((res)=> {
-        setUser(res.data)
-    })
-       .catch((error)=> {
+export default function FavFacility({
+  user,
+  setUser,
+  render,
+  allUsers,
+  facilities,
+  facility,
+  setFacility,
+  favorite,
+  setFavorite,
+}) {
+  const favFacility = async () => {
+    axios
+      .post(
+        `http://localhost:5000/api/users/${user._id}`,
+        {
+          favFacility: {
+            name: facility.attributes.name,
+            address: facility.attributes.address.physical.address_1,
+            website: facility.attributes.website,
+            phone: facility.attributes.phone.main,
+          },
+        },
+        { headers: { "x-auth-token": localStorage.getItem("token") } }
+      )
+      .then((res) => {
+        setFavorite(res.data);
+      })
+      .catch((error) => {
         if (error.response) {
           console.log(error.response.data);
           console.log(error.response.status);
@@ -21,4 +38,5 @@ export default function AppointmentTracker({user, setUser, render, allUsers, fac
         }
         console.log(error.config);
       });
-    };
+  };
+}

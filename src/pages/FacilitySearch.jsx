@@ -5,12 +5,11 @@ import FacilityMapper from "../components/FacilityMapper";
 import useForm from "../useForm";
 import TextField from "@mui/material/TextField";
 import "../pages/FacilitySearch.css";
-
+import MapContainer from "../components/MapContainer";
 
 const FacilitySearch = ({}) => {
   const [facilities, setFacilities] = useState([]);
 
-  
   let idArray = [];
   // destructure useForm
   // declare callback to be sent into useForm
@@ -18,19 +17,19 @@ const FacilitySearch = ({}) => {
   //  //removing whitespace (opt)
   const { formValue, handleChange, handleSubmit } = useForm(getFacilities);
 
-  async function getFacilities () {
-    const {street_address, city, state, zip} = formValue;
+  async function getFacilities() {
+    const { street_address, city, state, zip } = formValue;
 
     street_address.replace(/\s/g, "%20");
     city.replace(/\s/g, "%20");
     state.replace(/\s/g, "%20");
     zip.replace(/\s/g, "%20");
 
-      await axios
+    await axios
       .get(
         `https://sandbox-api.va.gov/services/va_facilities/v0/nearby?street_address=${street_address}&city=${city}&state=${state}&zip=${zip}&drive_time=60`,
         {
-          headers: { apikey: 'ks9OZMlUje9CyqGLP2RtQ4Yx9lxBLqvq' },
+          headers: { apikey: "ks9OZMlUje9CyqGLP2RtQ4Yx9lxBLqvq" },
         }
       )
 
@@ -39,10 +38,12 @@ const FacilitySearch = ({}) => {
           idArray.push(el.id);
         });
         idArray = idArray.join("%2C");
-        return axios.get(`https://sandbox-api.va.gov/services/va_facilities/v0/facilities?ids=${idArray}`,
-        {
-          headers: { apikey: 'ks9OZMlUje9CyqGLP2RtQ4Yx9lxBLqvq' },
-        })
+        return axios.get(
+          `https://sandbox-api.va.gov/services/va_facilities/v0/facilities?ids=${idArray}`,
+          {
+            headers: { apikey: "ks9OZMlUje9CyqGLP2RtQ4Yx9lxBLqvq" },
+          }
+        );
       })
       .then((res) => {
         setFacilities(res.data.data);
@@ -59,12 +60,12 @@ const FacilitySearch = ({}) => {
         }
         console.log(error.config);
       });
-  };
-
+  }
 
   return (
     <div className="facility-finder">
       <div>
+        <MapContainer />
         <form onSubmit={(event) => handleSubmit(event)}>
           <div>
             <h1 className="heading">Search Below</h1>
@@ -109,19 +110,14 @@ const FacilitySearch = ({}) => {
               required
             />
           </div>
-        <div className="flex-button">
-          <Button
-            className="Search-Button"
-            type="submit"
-
-            variant="contained"
-            >
-            Search
-          </Button>{" "}
-        </div>
-      </form>
+          <div className="flex-button">
+            <Button className="Search-Button" type="submit" variant="contained">
+              Search
+            </Button>{" "}
+          </div>
+        </form>
         <h1>These are your Facilities within 60 minutes!</h1>
-        <FacilityMapper facilities={facilities}/>
+        <FacilityMapper facilities={facilities} />
       </div>
     </div>
   );

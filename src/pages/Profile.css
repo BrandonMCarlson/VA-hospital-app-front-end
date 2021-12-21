@@ -105,3 +105,14 @@ label[data-shrink=false]+.MuiInputBase-formControl .css-1sqnrkk-MuiInputBase-inp
 .appt{
     border-style: solid;
 }
+.pref{
+    border-style: solid;
+    text-decoration: solid;
+    text-decoration: underline;
+}
+.css-tzssek-MuiSvgIcon-root{
+    position: relative;
+}
+div{
+    position: relative;
+}
