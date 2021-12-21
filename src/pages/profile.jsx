@@ -41,8 +41,12 @@ const Profile = ({
             Preferred Facility:
             <br /> <p>𝐍𝐚𝐦𝐞: {user.favFacility.name}</p>
             <br /> <p>𝐀𝐝𝐝𝐫𝐞𝐬𝐬:{user.favFacility.address}</p>
-            <br /> <p> 𝐖𝐞𝐛𝐬𝐢𝐭𝐞:{user.favFacility.website}</p>
-            <br /> <p>𝐏𝐡𝐨𝐧𝐞:{user.favFacility.number}</p>{" "}
+            <br /> <p> 𝐖𝐞𝐛𝐬𝐢𝐭𝐞:{user.favFacility.website === null
+                      ? "no website"
+                     : user.favFacility.website}</p>
+            <br /> <p>𝐏𝐡𝐨𝐧𝐞:{user.favFacility.phone === null
+                      ? "no main number"
+                     : user.favFacility.phone}</p>{" "}
           </div>
         </div>
       </div>
