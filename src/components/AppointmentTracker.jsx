@@ -107,6 +107,7 @@ export default function AppointmentTracker({ user, setUser, getUser }) {
         />
       </Box>
       <Button
+      sx={{bgcolor: "black"}}
         className="save-buttons"
         variant="contained"
         type="submit"

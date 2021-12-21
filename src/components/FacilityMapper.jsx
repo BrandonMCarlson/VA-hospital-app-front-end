@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../components/FacilityMapper.css";
 import Button from "@mui/material/Button";
 import axios from "axios";
@@ -12,6 +12,8 @@ const FacilityMapper = ({
   setFacility,
   favorite,
   setFavorite,
+  setProfile,
+  profile,
 }) => {
   const favFacility = async (facility) => {
     axios
@@ -44,6 +46,16 @@ const FacilityMapper = ({
       });
   };
   console.log(facilities);
+  
+  const getUser = async () => {
+    await axios.get(`http://localhost:5000/api/users/${user._id}`).then((res) => {
+      setProfile(res.data);
+      console.log(res.data);
+    });
+  };
+  
+  useEffect(() => {getUser(user._id)},  [favorite]);
+
   return (
     <div className="results">
       <ul>
@@ -69,7 +81,7 @@ const FacilityMapper = ({
                       ? "no main number"
                       : facility.attributes.phone.main}
                   </p>
-                  <button onClick={() => favFacility(facility)}> Save </button>
+                  <button className="save" onClick={() => favFacility(facility)}> Save </button>
                 </li>
               );
             })}

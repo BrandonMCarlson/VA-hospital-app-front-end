@@ -7,7 +7,7 @@ import TextField from "@mui/material/TextField";
 import "../pages/FacilitySearch.css";
 import MapContainer from "../components/MapContainer";
 
-const FacilitySearch = ({user, favorite, setFavorite}) => {
+const FacilitySearch = ({user, favorite, setFavorite, getUser, setUser, profile, setProfile }) => {
   const [facilities, setFacilities] = useState([]);
   
   let idArray = [];
@@ -111,7 +111,7 @@ const FacilitySearch = ({user, favorite, setFavorite}) => {
             />
           </div>
           <div className="flex-button">
-            <Button className="Search-Button" type="submit" variant="contained">
+            <Button  sx={{bgcolor: "black"}} className="Search-Button" type="submit" variant="contained">
               Search
             </Button>{" "}
           </div>

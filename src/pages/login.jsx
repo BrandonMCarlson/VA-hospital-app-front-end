@@ -59,6 +59,7 @@ const Login = ({ setUser, setProfile }) => {
             <p></p>
             <div className="register-here-button">
               <Button
+                sx={{bgcolor: "black"}}
                 className="login-buttons"
                 type="submit"
                 onClick={(event) => handleSubmit(event)}
@@ -71,7 +72,7 @@ const Login = ({ setUser, setProfile }) => {
           <div className="register-here-button">
             <Link style={{ textDecoration: "none" }} to="/register">
               {" "}
-              <Button className="login-buttons" variant="contained">
+              <Button sx={{bgcolor: "black"}} className="login-buttons" variant="contained">
                 Register Here
               </Button>
             </Link>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import AppointmentTracker from "../components/AppointmentTracker";
 import "./Profile.css";
+import axios from "axios";
+import { auth } from "google-auth-library";
 
 
 const Profile = ({
@@ -11,18 +13,23 @@ const Profile = ({
   render,
   facility,
   setFacility,
-  getUser,
   facilities,
   getFacilities,
   favFacility,
+  favorite,
+  setFavorite,
 }) => {
-  const [value, setValue] = React.useState("1");
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const getUser = async () => {
+    await axios.get(`http://localhost:5000/api/users/${user._id}`, {
+      headers: { "x-auth-token": localStorage.getItem("token") },
+    } ).then((res) => {
+      setUser(res.data);
+      console.log(res.data);
+    });
   };
-
-  useEffect(() => {}, [profile._id]);
+  
+  useEffect(() => {getUser(user._id)},  []);
 
   return (
     <div>

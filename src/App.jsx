@@ -51,6 +51,7 @@ function App() {
 
   useEffect(() => {
     getAllUsers();
+    getUser(user._id);
   }, []);
 
   return (
@@ -62,8 +63,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Login setUser={setUser} setProfile={setProfile}  />}></Route>
           <Route path="register" element={<Register setUser={setUser} user={user} setProfile={setProfile}/>}></Route>
-          <Route path="profile" element={<Profile user={user}  render={render} setUser={setUser} setProfile={setProfile} profile={profile} facility={facility} setFacility={setFacility} setUser={setUser} getUser={getUser} />}></Route>
-          <Route path="FacilitySearch" element={<FacilitySearch facility={facility} setFacility={setFacility} user={user} favorite={favorite} setFavorite={setFavorite} />}></Route>
+          <Route path="profile" element={<Profile user={user}  render={render}  setProfile={setProfile} profile={profile} facility={facility} setFacility={setFacility} setUser={setUser} getUser={getUser} favorite={favorite} setFavorite={setFavorite} />}></Route>
+          <Route path="FacilitySearch" element={<FacilitySearch facility={facility} setFacility={setFacility} user={user} favorite={favorite} setFavorite={setFavorite} getUser={getUser} profile={profile} setProfile={setProfile} />}></Route>
         </Routes>
         <div className="footer-div">
         {!render ? null : <MeetingRoomIcon onClick={()=>logoutUser()} fontSize="large"/>}
