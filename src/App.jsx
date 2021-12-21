@@ -42,6 +42,7 @@ function App() {
     console.log(localStorage.getItem("token"));
     localStorage.removeItem("token");
     setUser(null);
+    setProfile(null);
     navigate("/");
     console.log(localStorage.getItem("token"));
   };
@@ -62,7 +63,7 @@ function App() {
           <Route path="/" element={<Login setUser={setUser} setProfile={setProfile}  />}></Route>
           <Route path="register" element={<Register setUser={setUser} user={user} setProfile={setProfile}/>}></Route>
           <Route path="profile" element={<Profile user={user}  render={render} setUser={setUser} setProfile={setProfile} profile={profile} facility={facility} setFacility={setFacility} setUser={setUser} getUser={getUser} />}></Route>
-          <Route path="FacilitySearch" element={<FacilitySearch facility={facility} setFacility={setFacility} />}></Route>
+          <Route path="FacilitySearch" element={<FacilitySearch facility={facility} setFacility={setFacility} user={user} favorite={favorite} setFavorite={setFavorite} />}></Route>
         </Routes>
         <div className="footer-div">
         {!render ? null : <MeetingRoomIcon onClick={()=>logoutUser()} fontSize="large"/>}

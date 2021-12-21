@@ -7,9 +7,9 @@ import TextField from "@mui/material/TextField";
 import "../pages/FacilitySearch.css";
 import MapContainer from "../components/MapContainer";
 
-const FacilitySearch = ({}) => {
+const FacilitySearch = ({user, favorite, setFavorite}) => {
   const [facilities, setFacilities] = useState([]);
-
+  
   let idArray = [];
   // destructure useForm
   // declare callback to be sent into useForm
@@ -117,7 +117,7 @@ const FacilitySearch = ({}) => {
           </div>
         </form>
         <h1>These are your Facilities within 60 minutes!</h1>
-        <FacilityMapper facilities={facilities} />
+        <FacilityMapper facilities={facilities} user={user} setFavorite={setFavorite} />
       </div>
     </div>
   );
