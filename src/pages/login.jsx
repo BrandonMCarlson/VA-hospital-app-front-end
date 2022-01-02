@@ -35,6 +35,7 @@ const Login = ({ setUser, setProfile }) => {
       <div>
         <div className="login-title">
           <h1>Your Health Matters!</h1>
+          <h2>*account not required to search for facilites*</h2>
           <br></br>
           <h1>Login</h1>
         </div>

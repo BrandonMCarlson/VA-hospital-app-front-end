@@ -19,6 +19,7 @@ const FacilitySearch = ({user, favorite, setFavorite, getUser, setUser, profile,
 
   async function getFacilities() {
     const { street_address, city, state, zip } = formValue;
+    const API_KEY = process.env.REACT_APP_VA_API_KEY;
 
     street_address.replace(/\s/g, "%20");
     city.replace(/\s/g, "%20");
@@ -29,7 +30,7 @@ const FacilitySearch = ({user, favorite, setFavorite, getUser, setUser, profile,
       .get(
         `https://sandbox-api.va.gov/services/va_facilities/v0/nearby?street_address=${street_address}&city=${city}&state=${state}&zip=${zip}&drive_time=60`,
         {
-          headers: { apikey: "ks9OZMlUje9CyqGLP2RtQ4Yx9lxBLqvq" },
+          headers: { apikey: `${API_KEY}`},
         }
       )
 
@@ -41,7 +42,7 @@ const FacilitySearch = ({user, favorite, setFavorite, getUser, setUser, profile,
         return axios.get(
           `https://sandbox-api.va.gov/services/va_facilities/v0/facilities?ids=${idArray}`,
           {
-            headers: { apikey: "ks9OZMlUje9CyqGLP2RtQ4Yx9lxBLqvq" },
+            headers: { apikey: `${API_KEY}`},
           }
         );
       })

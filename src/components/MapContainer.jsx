@@ -1,62 +1,71 @@
 import React from "react";
-import { GoogleMap, LoadScript } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 
 const MapContainer = () => {
+  const API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
   const mapStyles = {
     height: "30vh",
     width: "100%",
   };
 
   const defaultCenter = {
-    lat: 41.3851,
-    lng: 2.1734,
+    lat: 47.65449791,
+    lng: -117.42244742,
   };
 
   const locations = [
     {
-      name: "Location 1",
+      name: "Spokane VA Clinic",
       location: {
-        lat: 41.3954,
-        lng: 2.162,
+        lat: 47.65449791,
+        lng: -117.42244742,
       },
     },
     {
-      name: "Location 2",
+      name: "VA Medical Center (VAMC)",
       location: {
-        lat: 41.3917,
-        lng: 2.1649,
+        lat: 47.70192635,
+        lng: -117.47562284,
       },
     },
     {
-      name: "Location 3",
+      name: "East Front Avenue VA Clinic",
       location: {
-        lat: 41.3773,
-        lng: 2.1585,
+        lat: 47.66032451,
+        lng: -117.40147021,
       },
     },
     {
-      name: "Location 4",
+      name: "Spokane VA Mobile Clinic",
       location: {
-        lat: 41.3797,
-        lng: 2.1682,
+        lat: 47.70192635,
+        lng: -117.47562284,
       },
     },
     {
-      name: "Location 5",
+      name: "Coeur d 'Alene VA Clinic",
       location: {
-        lat: 41.4055,
-        lng: 2.1915,
+        lat: 47.69263845,
+        lng: -116.79626796,
       },
     },
   ];
 
   return (
-    <LoadScript googleMapsApiKey="AIzaSyCHfq4zl9FHwXc1RQcssRGZpLXX8CL648k">
+    <LoadScript googleMapsApiKey={API_KEY}>
       <GoogleMap
         mapContainerStyle={mapStyles}
         zoom={13}
-        center={defaultCenter}
-      />
+        center={defaultCenter}>
+          {
+            locations.map(item=> {
+              return(
+                <Marker key={item.name} position={item.location}/>
+              )
+            })
+          }
+        </GoogleMap>
+      
     </LoadScript>
   );
 };

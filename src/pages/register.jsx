@@ -110,7 +110,7 @@ const Register = ({ user, setUser, setProfile }) => {
             />
           </div>
           <div className="flex-button">
-            <Button
+            <Button sx={{bgcolor: "black"}}
               className="login-buttons"
               type="submit"
               onClick={(event) => handleSubmit(event)}

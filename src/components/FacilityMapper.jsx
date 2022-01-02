@@ -15,6 +15,7 @@ const FacilityMapper = ({
   setProfile,
   profile,
 }) => {
+  console.log(facilities)
   const favFacility = async (facility) => {
     axios
       .post(
@@ -45,16 +46,8 @@ const FacilityMapper = ({
         console.log(error.config);
       });
   };
-  console.log(facilities);
+ 
   
-  const getUser = async () => {
-    await axios.get(`http://localhost:5000/api/users/${user._id}`).then((res) => {
-      setProfile(res.data);
-      console.log(res.data);
-    });
-  };
-  
-  useEffect(() => {getUser(user._id)},  [favorite]);
 
   return (
     <div className="results">
